@@ -1,0 +1,33 @@
+<script>
+    console.log('Pilha/stack')
+
+    // LIFO - Stack
+    class BrowserHistoryStack {
+        constructor() {
+            this.data = [];
+        }
+        push(item) {
+            this.data.push(item);
+
+        }
+        back() { // pop()
+            this.data.pop();
+
+        }
+        print() {
+            console.log(this.data);
+        }
+
+    }
+
+
+    const history = new BrowserHistoryStack ()
+    history.push('https://www.google.com/');
+    history.push('https://www.youtube.com/');
+    history.push('https://www.facebook.com/');
+    history.print();
+    history.back(); // Nesse momento, o comando vai remover o último item que entou na pilha
+                    // Como se clicasse no botão back do navegador.
+    history.print();
+
+</script>

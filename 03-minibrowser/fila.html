@@ -1,0 +1,54 @@
+<script>
+    // Queue = fila em inglês
+    console.log('[Fila/Queue]')
+    // Qualquer tipo de dado    
+    // Uma atrás da outra -> a ordem importa
+    // Quem entra primeiro, sai primeiro
+
+    // FILA = LISTA
+
+    var fila = [
+        'scripts.js',
+        'style.css',
+        'imagem.png',
+    ];  // tem uma ordem que começa do ZERO
+        // para acrescentar algo no Array, podemos utilizar a função .push
+    fila.push('dog.png');
+        // para remover o primeiro elemento da lista, utilizamos a função .shift
+    fila.shift();
+
+    // ===========================
+    // RECEITA PARA CRIAR FILAS
+    // ===========================
+    // - enqueue (enfileirar - adicionar)
+    // - dequeue (desenfileirar - remover)
+    class Queue { //Class: receita para criar objetos
+        constructor(){
+            this.data = [];
+        }
+        print(){
+            console.log(this.data)
+        }
+        enqueue(item){
+            this.data.push(item)
+        }
+        dequeue(){
+            this.data.shift();
+        }
+    }
+
+    // Design do código * First
+    var requests = new Queue();
+    // Open Closed
+    // Open: Aberto para extensão
+    // Closed: Fechado para
+    requests.enqueue('scripts.js')
+    requests.print();
+    requests.dequeue()
+    requests.enqueue('style.css')
+    requests.enqueue('imagem.png')
+    requests.enqueue('dog.png')
+    requests.print();
+
+
+</script>

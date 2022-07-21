@@ -1,0 +1,69 @@
+<!--
+
+# App de Corrida
+Preço Base da Corrida
+Custo Fixo
+Horários e regiões de maior movimento
+
+O que impacta diretamente no valor para o usuário?
+- distância em km
+- tempo em minutos
+
+-->
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input placeholder="Distância em Km" id="campoDistanciaEmKm">
+    <input placeholder="Tempo em minutos" id="campoTempoEmMin">
+    <!-- O CÓDIGO onclick VAI GUARDAR UMA INFORMAÇÃO PARA SER EXECUTADA QUANDO O BOTÃO FOR ACIONADO -->
+    <button onclick="calulaCorrida()">CALCULA</button>
+    
+    <script>
+        function formataMoeda(algumValor){
+            var valorFormatado = algumValor.toFixed(2).replace('.', ',')
+            return valorFormatado //PRECISAMOS RETORNAR UM VALOR DESSA FUNÇÃO PARA QUE SEJA POSSÍVEL APRESENTAR O VALOR NA PRÓXIMA FUNÇÃO
+        }
+        
+        // CRIEI UMA ESTRUTURA DE FUNÇÃO PARA EXECUTAR O PROCESSO DE CALCULO DA CORRIDA
+        function calulaCorrida(){
+            
+            // [PROCESSAMENTO]
+            // VALIDAR NA ENTRADA / FAIL FAST VALIDATIONS
+            if(campoDistanciaEmKm.value == ''){
+                alert('Não temos o valor da distância')
+                return; // JÁ FAZ O RETORNO DA FUNÇÃO PARA QUE NÃO EXECUTE O RESTANTE DELA
+            }
+
+
+            // ORGANIZAR AS ENTRADAS E FAZER A REGRA DE NEGÓCIO
+            var tarifaDinamica = 1.4;
+            // COM A id DO INPUT EU POSSO OBTER AS INFORMAÇÕES CONTIDAS LÁ
+            // O COMANDO .value INDICA QUE ESTOU PEGANDO A INFORMAÇÃO DE VALOR DAQUELE ID
+            var distanciaEmKm = campoDistanciaEmKm.value * tarifaDinamica;
+            var tempoEmMin = campoTempoEmMin.value * 0.26; // Fatores obtidos por outras partes da empresa para obter o valor desejado da corrida
+            var valorDaCorrida = 2 + distanciaEmKm + tempoEmMin;
+            
+            /*
+            PODEMOS DESMEMBRAR ESSA ESTRUTURA DE FORMATAÇÃO DE VALOR PARA UMA FUNÇÃO ESPECÍFICA
+            valorDaCorrida = valorDaCorrida.toFixed(2).replace('.', ',')
+            */
+
+            // [OUTPUT]
+            alert("O valor da corrida é R$ " + formataMoeda(valorDaCorrida));
+
+        }
+
+
+
+
+    </script>
+    
+</body>
+</html>
